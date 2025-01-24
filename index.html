@@ -1,0 +1,87 @@
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: relative; display: inline-block;" class="canvas">
+        <div style="position: absolute; display: flex; align-items: center; width: 100%; padding: 20px;" class="health-bar-container">
+            <!--Player health-->
+            <div style=
+            "position: relative; 
+            height: 30px; 
+            width: 100%;
+            background-color: grey;
+            display: flex;
+            justify-content: flex-end;
+            "
+            >
+                <div style=
+                    "background-color: yellow; 
+                    height: 30px;
+                    width: 100%;
+                    " 
+                    id="playerHealth"
+                    class="player-health-bar">
+                </div>
+            </div>
+
+            <!--Timer-->
+
+            <div 
+            id="timer" 
+                style=
+                "background-color: red; 
+                width: 100px; 
+                height: 100px; 
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                ">
+                60
+            </div>
+
+            <!-- Enemy health-->
+
+            <div 
+            style=
+            "position: relative; 
+            height: 30px; 
+            width: 100%;
+            background-color: grey;"
+            >
+                <div 
+                id="enemyHealth"
+                style=
+                    "background-color: yellow;
+                    height: 30px;
+                    " 
+                class="enemy-health-bar">
+                </div>
+            </div>
+        </div>
+        <div 
+        style=
+        "color: beige;
+        position: absolute; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        display: none;
+        " 
+        id="displayOutcome">
+        tie
+        </div>
+        <canvas></canvas>
+    </div>
+</body>
+<script src="js/utils.js"></script>
+<script src="js/classes.js"></script>
+<script src="index.js"></script>
