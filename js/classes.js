@@ -11,7 +11,17 @@ class Sprite {
         this.framesElapsed = framesElapsed;
         this.framesHold = framesHold;
         this.offset = offset
+
+        // Debug image loading
+        this.image.onload = () => {
+            console.log('Image loaded successfully:', this.image.src);
+        };
+        this.image.onerror = () => {
+            console.error('Failed to load image:', this.image.src);
+        };
     };
+
+    
 
 
     draw(){
@@ -93,9 +103,17 @@ class Fighter extends Sprite{
         this.sprites = sprites,
         this.dead = false;
 
-        for(const sprite in this.sprites){
-            sprites[sprite].image = new Image();
-            sprites[sprite].image.src = sprites[sprite].imageSrc;
+        for (const sprite in this.sprites) {
+            this.sprites[sprite].image = new Image();
+            this.sprites[sprite].image.src = this.sprites[sprite].imageSrc;
+        
+            // Debug sprite loading
+            this.sprites[sprite].image.onload = () => {
+                console.log(`Sprite loaded successfully: ${this.sprites[sprite].image.src}`);
+            };
+            this.sprites[sprite].image.onerror = () => {
+                console.error(`Failed to load sprite: ${this.sprites[sprite].image.src}`);
+            };
         }
 
         console.log(this.sprites)

@@ -30,119 +30,92 @@ const shop = new Sprite({
 
 });
 
-
 const player = new Fighter({
-    position: {
-    x: 0,
-    y: 0
-    },
-    velocity :{
-        x: 0,
-        y: 0
-    },
-    imageSrc: './img/samuraiMack/idle.png',
-    frameMax:8,
+    position: { x: 0, y: 0 },
+    velocity: { x: 0, y: 0 },
+    imageSrc: '/img/samuraiMack/idle.png', // Updated path
+    frameMax: 8,
     scale: 2.5,
-    offset: {
-        x: 215,
-        y: 157
-    },
-    sprites:{
+    offset: { x: 215, y: 157 },
+    sprites: {
         idle: {
-            imageSrc:'./img/samuraiMack/idle.png',
+            imageSrc: '/img/samuraiMack/idle.png', // Updated path
             frameMax: 8
         },
-        run:{
-            imageSrc: './img/samuraiMack/Run.png',
-            frameMax:8
+        run: {
+            imageSrc: '/img/samuraiMack/Run.png', // Updated path
+            frameMax: 8
         },
-        jump:{
-            imageSrc: './img/samuraiMack/Jump.png',
-            frameMax: 2,
+        jump: {
+            imageSrc: '/img/samuraiMack/Jump.png', // Updated path
+            frameMax: 2
         },
         fall: {
-            imageSrc: './img/samuraiMack/Fall.png',
-            frameMax: 2,
+            imageSrc: '/img/samuraiMack/Fall.png', // Updated path
+            frameMax: 2
         },
         attack1: {
-            imageSrc: './img/samuraiMack/Attack1.png',
-            frameMax: 6,
+            imageSrc: '/img/samuraiMack/Attack1.png', // Updated path
+            frameMax: 6
         },
         takeHit: {
-            imageSrc: './img/samuraiMack/Takehit.png',
-            frameMax: 4,
+            imageSrc: '/img/samuraiMack/Takehit.png', // Updated path
+            frameMax: 4
         },
         death: {
-            imageSrc: './img/samuraiMack/Death.png',
-            frameMax: 6,
-        },
-    }, 
+            imageSrc: '/img/samuraiMack/Death.png', // Updated path
+            frameMax: 6
+        }
+    },
     attackBox: {
-        offset: {
-          x: 100,
-          y: 50
-        },
+        offset: { x: 100, y: 50 },
         width: 160,
         height: 50
-      }
+    }
 });
 //enemy
 const enemy = new Fighter({
-    position: {
-    x: 400,
-    y: 100
-    },
-    velocity :{
-        x: 0,
-        y: 0
-    },
-    offset: {
-        x: 215,
-        y: 170
-    },
-    imageSrc: './img/kenji/idle.png',
-    frameMax:4,
-    scale:2.5,
-    sprites:{
+    position: { x: 400, y: 100 },
+    velocity: { x: 0, y: 0 },
+    offset: { x: 215, y: 170 },
+    imageSrc: '/img/kenji/idle.png', // Updated path
+    frameMax: 4,
+    scale: 2.5,
+    sprites: {
         idle: {
-            imageSrc:'./img/kenji/idle.png',
-            frameMax:4
+            imageSrc: '/img/kenji/idle.png', // Updated path
+            frameMax: 4
         },
-        run:{
-            imageSrc: './img/kenji/Run.png',
-            frameMax:8
+        run: {
+            imageSrc: '/img/kenji/Run.png', // Updated path
+            frameMax: 8
         },
-        jump:{
-            imageSrc: './img/kenji/Jump.png',
-            frameMax: 2,
+        jump: {
+            imageSrc: '/img/kenji/Jump.png', // Updated path
+            frameMax: 2
         },
         fall: {
-            imageSrc: './img/kenji/Fall.png',
-            frameMax: 2,
+            imageSrc: '/img/kenji/Fall.png', // Updated path
+            frameMax: 2
         },
         attack1: {
-            imageSrc: './img/kenji/Attack1.png',
-            frameMax: 4,
+            imageSrc: '/img/kenji/Attack1.png', // Updated path
+            frameMax: 4
         },
         takeHit: {
-            imageSrc: './img/kenji/Takehit.png',
-            frameMax: 3,
+            imageSrc: '/img/kenji/Takehit.png', // Updated path
+            frameMax: 3
         },
         death: {
-            imageSrc: './img/kenji/Death.png',
-            frameMax: 7,
-        },
-
+            imageSrc: '/img/kenji/Death.png', // Updated path
+            frameMax: 7
+        }
     },
     attackBox: {
-        offset: {
-            x:-170,
-            y:50
-        },
-        width:170,
+        offset: { x: -170, y: 50 },
+        width: 170,
         height: 50
     }
-
 });
 
 const keys = {
