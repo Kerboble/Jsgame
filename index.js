@@ -15,7 +15,7 @@ const background = new Sprite({
         x:0,
         y:0
     },
-    imageSrc: './img/background.png',
+    imageSrc: '/img/background.png',
     scale: 1
 });
 
@@ -24,7 +24,7 @@ const shop = new Sprite({
         x:600,
         y:128
     },
-    imageSrc: './img/shop.png',
+    imageSrc: '/img/shop.png',
     scale:2.75,
     frameMax:6,
 
@@ -33,13 +33,13 @@ const shop = new Sprite({
 const player = new Fighter({
     position: { x: 0, y: 0 },
     velocity: { x: 0, y: 0 },
-    imageSrc: '/img/samuraiMack/idle.png', // Updated path
+    imageSrc: '/img/samuraiMack/Idle.png', // Updated path
     frameMax: 8,
     scale: 2.5,
     offset: { x: 215, y: 157 },
     sprites: {
         idle: {
-            imageSrc: '/img/samuraiMack/idle.png', // Updated path
+            imageSrc: '/img/samuraiMack/Idle.png', // Updated path
             frameMax: 8
         },
         run: {
@@ -78,12 +78,12 @@ const enemy = new Fighter({
     position: { x: 400, y: 100 },
     velocity: { x: 0, y: 0 },
     offset: { x: 215, y: 170 },
-    imageSrc: '/img/kenji/idle.png', // Updated path
+    imageSrc: '/img/kenji/Idle.png', // Updated path
     frameMax: 4,
     scale: 2.5,
     sprites: {
         idle: {
-            imageSrc: '/img/kenji/idle.png', // Updated path
+            imageSrc: '/img/kenji/Idle.png', // Updated path
             frameMax: 4
         },
         run: {
