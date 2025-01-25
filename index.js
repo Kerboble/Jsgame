@@ -247,7 +247,9 @@ window.addEventListener('keydown', (event) => {
         player.lastKey = 'a'
         break; 
         case 'w':
-        player.velocity.y = -20
+            if(player.position.y > 300){
+                player.velocity.y = -20
+            }
         break;
         case ' ':
         player.attack();
@@ -324,13 +326,13 @@ function botLogic() {
         keys.ArrowRight.pressed = false;
     }
 
-    if(player.velocity.y < 0){
-        console.log(enemy.velocity.y)
+    if(player.velocity.y < 0 && enemy.position.y > 300){
+        console.log(enemy.position.y)
         enemy.velocity.y = -20
     }
 
     // Attack if within range
-    if (distance < 150 && !enemy.isAttacking) {
+    if (distance < 160 && !enemy.isAttacking) {
       enemy.attack();
     }
   }
