@@ -40,7 +40,7 @@ const player = new Fighter({
         x: 0,
         y: 0
     },
-    imageSrc: './assets/samuraiMack/idle.png',
+    imageSrc: '/assets/samuraiMack/idle.png',
     frameMax:8,
     scale: 2.5,
     offset: {
@@ -49,31 +49,31 @@ const player = new Fighter({
     },
     sprites:{
         idle: {
-            imageSrc:'./assets/samuraiMack/idle.png',
+            imageSrc:'/assets/samuraiMack/idle.png',
             frameMax: 8
         },
         run:{
-            imageSrc: './assets/samuraiMack/Run.png',
+            imageSrc: '/assets/samuraiMack/Run.png',
             frameMax:8
         },
         jump:{
-            imageSrc: './assets/samuraiMack/Jump.png',
+            imageSrc: '/assets/samuraiMack/Jump.png',
             frameMax: 2,
         },
         fall: {
-            imageSrc: './assets/samuraiMack/Fall.png',
+            imageSrc: '/assets/samuraiMack/Fall.png',
             frameMax: 2,
         },
         attack1: {
-            imageSrc: './assets/samuraiMack/Attack1.png',
+            imageSrc: '/assets/samuraiMack/Attack1.png',
             frameMax: 6,
         },
         takeHit: {
-            imageSrc: './assets/samuraiMack/Takehit.png',
+            imageSrc: '/assets/samuraiMack/Takehit.png',
             frameMax: 4,
         },
         death: {
-            imageSrc: './assets/samuraiMack/Death.png',
+            imageSrc: '/assets/samuraiMack/Death.png',
             frameMax: 6,
         },
     }, 
@@ -100,36 +100,36 @@ const enemy = new Fighter({
         x: 215,
         y: 170
     },
-    imageSrc: './assets/kenji/idle.png',
+    imageSrc: '/assets/kenji/idle.png',
     frameMax:4,
     scale:2.5,
     sprites:{
         idle: {
-            imageSrc:'./assets/kenji/idle.png',
+            imageSrc:'/assets/kenji/idle.png',
             frameMax:4
         },
         run:{
-            imageSrc: './assets/kenji/Run.png',
+            imageSrc: '/assets/kenji/Run.png',
             frameMax:8
         },
         jump:{
-            imageSrc: './assets/kenji/Jump.png',
+            imageSrc: '/assets/kenji/Jump.png',
             frameMax: 2,
         },
         fall: {
-            imageSrc: './assets/kenji/Fall.png',
+            imageSrc: '/assets/kenji/Fall.png',
             frameMax: 2,
         },
         attack1: {
-            imageSrc: './assets/kenji/Attack1.png',
+            imageSrc: '/assets/kenji/Attack1.png',
             frameMax: 4,
         },
         takeHit: {
-            imageSrc: './assets/kenji/Takehit.png',
+            imageSrc: '/assets/kenji/Takehit.png',
             frameMax: 3,
         },
         death: {
-            imageSrc: './assets/kenji/Death.png',
+            imageSrc: '/assets/kenji/Death.png',
             frameMax: 7,
         },
 
