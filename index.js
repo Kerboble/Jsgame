@@ -31,7 +31,7 @@ const shop = new Sprite({
 });
 
 const player = new Fighter({
-    position: { x: 0, y: 0 },
+    position: { x: 0, y: 200 },
     velocity: { x: 0, y: 0 },
     imageSrc: '/img/samuraiMack/Idle.png', // Updated path
     frameMax: 8,
@@ -75,7 +75,7 @@ const player = new Fighter({
 });
 //enemy
 const enemy = new Fighter({
-    position: { x: 400, y: 100 },
+    position: { x: 400, y: 200 },
     velocity: { x: 0, y: 0 },
     offset: { x: 215, y: 170 },
     imageSrc: '/img/kenji/Idle.png', // Updated path
@@ -143,6 +143,7 @@ function animate(){
     shop.update();
     player.update();
     enemy.update();
+    botLogic();
 
     player.velocity.x = 0;
 
@@ -210,7 +211,7 @@ function animate(){
     &&checkForCollision({rectangle1: enemy, rectangle2: player})
     && enemy.framesCurrent === 2
    ){
-        player.takeHit(5);
+        player.takeHit(10);
         gsap.to('#playerHealth', {
             width: `${player.health}%`
         })
@@ -292,6 +293,47 @@ window.addEventListener('keyup', (event) => {
         break;
     }
 });
+let lastBotDecisionTime = 0; // Track the last time the bot made a decision
+const botDecisionCooldown = 200; // Cooldown time in milliseconds (e.g., 500ms = 0.5 seconds)
+
+function botLogic() {
+    if(player.health === 0 || enemy.health === 0 ){
+        keys.ArrowLeft.pressed = false;
+        keys.ArrowRight.pressed = false;
+        return
+    }
+    const currentTime = Date.now();
+
+    // Only make a decision if the cooldown has passed
+    if (currentTime - lastBotDecisionTime < botDecisionCooldown) {
+        return; // Exit the function if the cooldown hasn't passed
+    }
+
+    lastBotDecisionTime = currentTime; // Update the last decision time
+
+    const distance = Math.abs(player.position.x - enemy.position.x);
+    // Move towards the player
+    if(distance > 150){
+        keys.ArrowLeft.pressed = true
+        enemy.lastKey = 'ArrowLeft'
+    } else if(distance < 150){
+        keys.ArrowRight.pressed = true;
+        enemy.lastKey = 'ArrowRight'
+    } else {
+        keys.ArrowLeft.pressed = false;
+        keys.ArrowRight.pressed = false;
+    }
+
+    if(player.velocity.y < 0){
+        console.log(enemy.velocity.y)
+        enemy.velocity.y = -20
+    }
+
+    // Attack if within range
+    if (distance < 150 && !enemy.isAttacking) {
+      enemy.attack();
+    }
+  }
 
 timer();
 animate();

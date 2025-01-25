@@ -69,8 +69,7 @@ class Fighter extends Sprite{
         framesElapsed,
         framesHold,
         sprites,
-        attackBox = {offset : {}, width:undefined, height:undefined},
-        dead
+        attackBox = {offset : {}, width:undefined, height:undefined}
     })
          {
         super({
@@ -243,4 +242,6 @@ class Fighter extends Sprite{
             break
         }
     }
+
+    
 };
