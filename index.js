@@ -67,7 +67,15 @@ const player = new Fighter({
         attack1: {
             imageSrc: './assets/samuraiMack/Attack1.png',
             frameMax: 6,
-        }
+        },
+        takeHit: {
+            imageSrc: './assets/samuraiMack/Takehit.png',
+            frameMax: 4,
+        },
+        death: {
+            imageSrc: './assets/samuraiMack/Death.png',
+            frameMax: 6,
+        },
     }, 
     attackBox: {
         offset: {
@@ -115,7 +123,15 @@ const enemy = new Fighter({
         attack1: {
             imageSrc: './assets/kenji/Attack1.png',
             frameMax: 4,
-        }
+        },
+        takeHit: {
+            imageSrc: './assets/kenji/Takehit.png',
+            frameMax: 3,
+        },
+        death: {
+            imageSrc: './assets/kenji/Death.png',
+            frameMax: 7,
+        },
 
     },
     attackBox: {
@@ -162,7 +178,7 @@ function animate(){
         player.velocity.x = -5;
         player.switchSprite('run');
     } else if(keys.d.pressed && player.lastKey === 'd'){
-        player.image = player.sprites.run.image;
+        player.switchSprite('run');
         player.velocity.x = 5;
     } else {
         player.switchSprite('idle')
@@ -195,37 +211,58 @@ function animate(){
         enemy.switchSprite('fall')
     }
 
-    //detect collision
-   if(player.isAttacking &&
-    checkForCollision({rectangle1: player, rectangle2: enemy})
-   ){
-        console.log('player attack successful')
-        let enemyHealth = document.getElementById('enemyHealth');
-        enemy.health -= 5;
-        enemyHealth.style.width = `${enemy.health}%`;
+    //detect collision for enemy getting hit
+   if(
+        player.isAttacking 
+        &&checkForCollision({rectangle1: player, rectangle2: enemy})
+        && player.framesCurrent === 4
+    ){
+        enemy.takeHit(10);
         player.isAttacking = false
+        gsap.to('#enemyHealth', {
+            width: `${enemy.health}%`
+        })
         if(enemy.health === 0){
+            document.getElementById('rematchButton').style.removeProperty('display')
             determineWinner(player, enemy);
         }
    };
 
-   if(enemy.isAttacking &&
-    checkForCollision({rectangle1: enemy, rectangle2: player})
+   //if player misses their attack
+   if(player.isAttacking && player.framesCurrent === 4){
+    player.isAttacking = false;
+   }
+
+   if(enemy.isAttacking 
+    &&checkForCollision({rectangle1: enemy, rectangle2: player})
+    && enemy.framesCurrent === 2
    ){
-        console.log('enemy attack successful')
-        let playerHealth = document.getElementById('playerHealth');
-        player.health -= 5;
-        playerHealth.style.width = `${player.health}%`
+        player.takeHit(5);
+        gsap.to('#playerHealth', {
+            width: `${player.health}%`
+        })
         enemy.isAttacking = false
+
         if(player.health === 0){
+            document.getElementById('rematchButton').style.removeProperty('display')
             determineWinner(player, enemy);
         }
    };
+
+   //check if enemy misses 
+   if(enemy.isAttacking && enemy.framesCurrent === 2){
+    enemy.isAttacking = false;
+   }
 };
+
+//rematch functionality
+document.getElementById('rematchButton').addEventListener(('click'), () =>{
+    window.location.reload();
+})
 
 
 window.addEventListener('keydown', (event) => {
-    console.log(event.key)
+    if(player.dead || enemy.dead) return
     switch(event.key){
         case 'd':
         keys.d.pressed = true;
@@ -242,10 +279,10 @@ window.addEventListener('keydown', (event) => {
         player.attack();
         break;
         
+        
         //enemy
         case 'ArrowRight':
         keys.ArrowRight.pressed = true;
-        enemy.attackBox.offset.x = 0
         enemy.lastKey = 'ArrowRight'
         break;
         case 'ArrowLeft':

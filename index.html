@@ -1,9 +1,11 @@
 <head>
+    
     <style>
         * {
             box-sizing: border-box;
         }
     </style>
+   <link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <div style="position: relative; display: inline-block;" class="canvas">
@@ -13,15 +15,19 @@
             "position: relative; 
             height: 30px; 
             width: 100%;
-            background-color: grey;
+            background-color: red;
             display: flex;
             justify-content: flex-end;
+            border-bottom: 5px wheat solid;
+            border-left: 5px wheat solid;
+            border-top: 5px wheat solid;
             "
             >
                 <div style=
-                    "background-color: yellow; 
-                    height: 30px;
+                    "background-color: rgb(87, 175, 207); 
+                    height: 20px;
                     width: 100%;
+                    padding-top: 5px;
                     " 
                     id="playerHealth"
                     class="player-health-bar">
@@ -33,13 +39,15 @@
             <div 
             id="timer" 
                 style=
-                "background-color: red; 
+                "background-color: black; 
+                color: wheat;
                 width: 100px; 
-                height: 100px; 
+                height: 50px; 
                 flex-shrink: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                border: 5px wheat solid;
                 ">
                 60
             </div>
@@ -51,13 +59,18 @@
             "position: relative; 
             height: 30px; 
             width: 100%;
-            background-color: grey;"
+            background-color: red;
+            border-bottom: 5px wheat solid;
+            border-right: 5px wheat solid;
+            border-top: 5px wheat solid;
+            "
+            
             >
                 <div 
                 id="enemyHealth"
                 style=
-                    "background-color: yellow;
-                    height: 30px;
+                    "background-color: rgb(87, 175, 207);
+                    height: 20px;
                     " 
                 class="enemy-health-bar">
                 </div>
@@ -75,13 +88,25 @@
         left: 0;
         bottom: 0;
         display: none;
+        font-size: 50px;
         " 
         id="displayOutcome">
         tie
         </div>
+       <button 
+       id="rematchButton" 
+       style="
+       display: none;
+       position: absolute;
+       top: 20%;
+       right:400px;
+       ">
+            Rematch
+       </button>
         <canvas></canvas>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/utils.js"></script>
 <script src="js/classes.js"></script>
 <script src="index.js"></script>

@@ -29,6 +29,7 @@ function timer(){
 //check health
 function determineWinner(player, enemy){
     let outcome = document.getElementById('displayOutcome');
+    outcome.style.display = 'flex'
     clearInterval(timerInterval)
 
     if(player.health > enemy.health){
@@ -36,11 +37,8 @@ function determineWinner(player, enemy){
     } else if(player.health < enemy.health){
         outcome.innerHTML = "Player 2 Wins!"
     } else {
+        document.getElementById('rematchButton').style.removeProperty('display')
         outcome.innerHTML = 'Tie!'
     };
-
-    outcome.style.display = 'flex'
-    return true
 }
 
-//jump function
